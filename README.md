@@ -208,3 +208,7 @@ export default class Application extends React.Component {
   }
 }
 ```
+
+## Testing
+
+To test, run `npm run test` to start Karma, then `./node_modules/.bin/karma run karma.conf.js` in another console window.
