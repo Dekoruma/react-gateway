@@ -6,7 +6,7 @@ export const GatewayContext = React.createContext(null);
 
 export default class GatewayProvider extends React.Component {
   static propTypes = {
-    children: PropTypes.element,
+    children: PropTypes.element
   };
 
   constructor(props) {

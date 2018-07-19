@@ -13,7 +13,9 @@ export default class GatewayRegistry {
     }
 
     this._containers[name].setState({
-      children: Object.keys(this._children[name]).sort().map(id => this._children[name][id])
+      children: Object.keys(this._children[name])
+        .sort()
+        .map(id => this._children[name][id])
     });
   }
 

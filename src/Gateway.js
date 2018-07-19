@@ -28,7 +28,11 @@ class Gateway extends React.Component {
   }
 
   renderIntoGatewayNode(props) {
-    this.props.gatewayRegistry.addChild(this.props.into, this.id, props.children);
+    this.props.gatewayRegistry.addChild(
+      this.props.into,
+      this.id,
+      props.children
+    );
   }
 
   render() {
@@ -36,9 +40,11 @@ class Gateway extends React.Component {
   }
 }
 
-const GatewayWithContext = (props) => (
+const GatewayWithContext = props => (
   <GatewayContext.Consumer>
-    {gatewayRegistry => <Gateway gatewayRegistry={gatewayRegistry} {...props} />}
+    {gatewayRegistry => (
+      <Gateway gatewayRegistry={gatewayRegistry} {...props} />
+    )}
   </GatewayContext.Consumer>
 );
 

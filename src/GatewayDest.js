@@ -8,10 +8,7 @@ class GatewayDest extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     tagName: deprecated(PropTypes.string, 'Use "component" instead.'),
-    component: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.func
-    ]),
+    component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     gatewayRegistry: PropTypes.instanceOf(GatewayRegistry).isRequired
   };
 
@@ -28,15 +25,21 @@ class GatewayDest extends React.Component {
   }
 
   render() {
-    const {component, tagName, gatewayRegistry, ...attrs} = this.props;
+    const { component, tagName, gatewayRegistry, ...attrs } = this.props;
     delete attrs.name;
-    return React.createElement(component || tagName || 'div', attrs, this.state.children);
+    return React.createElement(
+      component || tagName || 'div',
+      attrs,
+      this.state.children
+    );
   }
 }
 
-const GatewayDestWithContext = (props) => (
+const GatewayDestWithContext = props => (
   <GatewayContext.Consumer>
-    {gatewayRegistry => <GatewayDest {...props} gatewayRegistry={gatewayRegistry} />}
+    {gatewayRegistry => (
+      <GatewayDest {...props} gatewayRegistry={gatewayRegistry} />
+    )}
   </GatewayContext.Consumer>
 );
 

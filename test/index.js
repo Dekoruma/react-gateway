@@ -3,7 +3,12 @@ import { expect } from 'chai';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOMServer from 'react-dom/server';
-import { Gateway, GatewayDest, GatewayProvider, GatewayRegistry} from '../src/index.js';
+import {
+  Gateway,
+  GatewayDest,
+  GatewayProvider,
+  GatewayRegistry
+} from '../src/index.js';
 
 function render(jsx) {
   return ReactDOMServer.renderToStaticMarkup(jsx);
@@ -19,16 +24,14 @@ describe('Gateway', function() {
       <GatewayProvider>
         <div>
           <section>
-            <Gateway into="foo">
-              Hello World
-            </Gateway>
+            <Gateway into="foo">Hello World</Gateway>
           </section>
-          <GatewayDest name="foo"/>
+          <GatewayDest name="foo" />
         </div>
       </GatewayProvider>,
       // should equal
       <div>
-        <section/>
+        <section />
         <div>Hello World</div>
       </div>
     );
@@ -37,10 +40,15 @@ describe('Gateway', function() {
   it('should be able to customize the GatewayDest element', function() {
     assertEqual(
       <GatewayProvider>
-        <GatewayDest component="section" className="elf" id="striped" name="foo"/>
+        <GatewayDest
+          component="section"
+          className="elf"
+          id="striped"
+          name="foo"
+        />
       </GatewayProvider>,
       // should equal
-      <section className="elf" id="striped"/>
+      <section className="elf" id="striped" />
     );
   });
 
@@ -51,10 +59,10 @@ describe('Gateway', function() {
 
     assertEqual(
       <GatewayProvider>
-        <GatewayDest component={Child} id="test" name="foo"/>
+        <GatewayDest component={Child} id="test" name="foo" />
       </GatewayProvider>,
       // should equal
-      <Child id="test"/>
+      <Child id="test" />
     );
   });
 
@@ -64,8 +72,8 @@ describe('Gateway', function() {
         <div>
           <Gateway into="foo">One</Gateway>
           <Gateway into="bar">Two</Gateway>
-          <GatewayDest name="bar"/>
-          <GatewayDest name="foo"/>
+          <GatewayDest name="bar" />
+          <GatewayDest name="foo" />
         </div>
       </GatewayProvider>,
       // should equal
@@ -93,7 +101,7 @@ describe('Gateway', function() {
               <div>Three</div>
             </Gateway>
           </section>
-          <GatewayDest name="foo"/>
+          <GatewayDest name="foo" />
         </div>
       </GatewayProvider>,
       // should equal
@@ -126,7 +134,7 @@ describe('Gateway', function() {
           <Gateway into="dest">
             <span>{this.textContent}</span>
           </Gateway>
-          );
+        );
       }
     }
 
@@ -142,7 +150,7 @@ describe('Gateway', function() {
       }
 
       render() {
-        return <Child/>;
+        return <Child />;
       }
     }
 
@@ -151,16 +159,16 @@ describe('Gateway', function() {
         return (
           <GatewayProvider>
             <div>
-              <Parent/>
-              <GatewayDest name="dest"/>
+              <Parent />
+              <GatewayDest name="dest" />
             </div>
           </GatewayProvider>
-          );
+        );
       }
     }
 
     assertEqual(
-      <Application/>,
+      <Application />,
       // should equal
       <div>
         <div>
